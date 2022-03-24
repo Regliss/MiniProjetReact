@@ -7,6 +7,7 @@ import HomeStack from './homeStack'
 import AnimesStack from './charactersStack'
 import MangasStack from './mangasStack'
 import AnimelistStack from './animelistStack'
+import MangalistStack from './mangalistStack'
 
 const BottomTab = createBottomTabNavigator()
 
@@ -18,6 +19,7 @@ const Routes = () => {
         <BottomTab.Screen name='AnimesStack' component={AnimesStack} />
         <BottomTab.Screen name='AnimelistStack' component={AnimelistStack} />
         <BottomTab.Screen name='MangasStack' component={MangasStack} />
+        <BottomTab.Screen name='MangalistStack' component={MangalistStack} />
       </BottomTab.Navigator>
     </NavigationContainer>
   )
