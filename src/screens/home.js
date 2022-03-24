@@ -23,11 +23,20 @@ const Home = ({ navigation }) => {
       <Button onPress={() => navigation.navigate('Animes')}>
         <TextStyled>To Animes</TextStyled>
       </Button>
-      <Button onPress={() => navigation.navigate('Animelist')}>
-        <TextStyled>To my list</TextStyled>
+      {/* <Button onPress={() => navigation.navigate('Animelist')}> */}
+      <Button
+        onPress={() => navigation.navigate('AnimelistStack', { screen: 'Animelist' })}
+      >
+        <TextStyled>To my anime list</TextStyled>
       </Button>
       <Button onPress={() => navigation.navigate('Mangas')}>
         <TextStyled>To Mangas</TextStyled>
+      </Button>
+      {/* <Button onPress={() => navigation.navigate('Mangalist')}> */}
+      <Button
+        onPress={() => navigation.navigate('MangalistStack', { screen: 'Mangalist' })}
+      >
+        <TextStyled>To my manga list</TextStyled>
       </Button>
       {/* <Card
         name='oui oui'
