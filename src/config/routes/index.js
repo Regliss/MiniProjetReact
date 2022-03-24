@@ -4,7 +4,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import HomeStack from './homeStack'
-import CharactersStack from './charactersStack'
+import AnimesStack from './charactersStack'
+import MangasStack from './mangasStack'
+import AnimelistStack from './animelistStack'
 
 const BottomTab = createBottomTabNavigator()
 
@@ -13,7 +15,9 @@ const Routes = () => {
     <NavigationContainer>
       <BottomTab.Navigator>
         <BottomTab.Screen name='HomeStack' component={HomeStack} />
-        <BottomTab.Screen name='CharactersStack' component={CharactersStack} />
+        <BottomTab.Screen name='AnimesStack' component={AnimesStack} />
+        <BottomTab.Screen name='AnimelistStack' component={AnimelistStack} />
+        <BottomTab.Screen name='MangasStack' component={MangasStack} />
       </BottomTab.Navigator>
     </NavigationContainer>
   )

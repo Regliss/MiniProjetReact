@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, FlatList, ScrollView } from 'react-native'
+import { View, Text, FlatList, ScrollView } from 'react-native'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Card from '../components/card'
@@ -9,15 +9,25 @@ import { CommonText } from '../components/texts'
 const Home = ({ navigation }) => {
   return (
     <ScrollView>
+      <Image source={{
+        uri: 'https://image.myanimelist.net/ui/OK6W_koKDTOqqqLDbIoPAphlZzlTj5CPK0fFssPvFnc'
+      }} />
+
       <TextStyled>Home</TextStyled>
-      <Button onPress={() => navigation.navigate('Login')}>
+      {/* <Button onPress={() => navigation.navigate('Login')}>
         <TextStyled>To Login</TextStyled>
       </Button>
       <Button onPress={() => navigation.navigate('Settings')}>
         <TextStyled>To Settings</TextStyled>
+      </Button> */}
+      <Button onPress={() => navigation.navigate('Animes')}>
+        <TextStyled>To Animes</TextStyled>
       </Button>
-      <Button onPress={() => navigation.navigate('Characters')}>
-        <TextStyled>To Characters</TextStyled>
+      <Button onPress={() => navigation.navigate('Animelist')}>
+        <TextStyled>To my list</TextStyled>
+      </Button>
+      <Button onPress={() => navigation.navigate('Mangas')}>
+        <TextStyled>To Mangas</TextStyled>
       </Button>
       {/* <Card
         name='oui oui'
@@ -35,6 +45,10 @@ const Home = ({ navigation }) => {
 
 const TextStyled = styled.Text``
 const Button = styled.TouchableOpacity``
+const Image = styled.Image`
+  width: 400px;
+  height: 100px;
+`
 
 Home.propTypes = {}
 

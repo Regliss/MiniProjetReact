@@ -1,12 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState, useCallback } from 'react'
-import { Text } from 'react-native'
+import { Text, ScrollView } from 'react-native'
 import styled from 'styled-components'
 import Avatar from '../components/avatar'
 import YoutubePlayer from "react-native-youtube-iframe";
 
 const Details = ({ route }) => {
-  const [manga, setManga] = useState({})
+  const [anime, setAnime] = useState({})
   const [playing, setPlaying] = useState(false);
   const {
     params: { id }
@@ -20,7 +20,7 @@ const Details = ({ route }) => {
     })
       .then(data => {
           //console.log(data)
-        setManga(data.data.data)
+        setAnime(data.data.data)
       })
       .catch(error => {
         console.log(error)
@@ -39,54 +39,41 @@ const Details = ({ route }) => {
   }, []);
 
   return (
+    <ScrollView>
     <Container>
       {/* <Avatar
         urlImage={`https:${character.thumbnail?.path.split(':')[1]}.${
           character.thumbnail?.extension
         }`}
       /> */}
-      <Text>Nom: {manga?.title}</Text>
-      <Text>Nb épisodes: {manga?.episodes}</Text>
-      <Text>Statut: {manga?.status}</Text>
-      <Text>Genres: {manga?.genres?.map(element => {
+      <Avatar
+          urlImage={anime?.images?.jpg?.image_url}
+      />
+      <Text>Nom: {anime?.title}</Text>
+      <Text>Nb épisodes: {anime?.episodes}</Text>
+      <Text>Statut: {anime?.status}</Text>
+      <Text>Genres: {anime?.genres?.map(element => {
           return element.name
       }).join(', ')}</Text>
-      {/* <VideoContainer source={{uri: manga?.trailer?.url}}   // Can be a URL or a local file.
-       ref={ref => (this.player = ref)}        // Store reference
-       onBuffer={this.maxBufferMs}                // Callback when remote video is buffering
-       onError={this.videoError}               // Callback when video cannot be loaded
-        /> */}
         {
-          manga?.trailer?.youtube_id !== undefined?
+          anime?.trailer?.youtube_id !== undefined?
           <YoutubePlayer
         height={300}
         play={playing}
-        videoId={ manga?.trailer.youtube_id }
+        videoId={ anime?.trailer.youtube_id }
         // videoId={"j2hiC9BmJlQ"}
         onChangeState={onStateChange}
       />:<>
       </>
-
         }
-        {/* <YoutubePlayer
-        height={300}
-        play={playing}
-        videoId={ manga?.trailer.youtube_id }
-        // videoId={"j2hiC9BmJlQ"}
-        onChangeState={onStateChange}
-      /> */}
-      {/* <Button title={playing ? "pause" : "play"} onPress={togglePlaying} /> */}
     </Container>
+    </ScrollView>
   )
 }
 
 const Container = styled.View``
-// const VideoContainer = styled(Video)`
-//     position: "absolute";
-//     top: 0;
-//     left: 0;
-//     bottom: 0;
-//     right: 0;
-// `
+const ViewStyled = styled.View`
+    background-color: white;
+`
 
 export default Details
