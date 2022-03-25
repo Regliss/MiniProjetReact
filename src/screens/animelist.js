@@ -23,20 +23,21 @@ const [animelist, setAnimelist] = useState([])
         }
     }
     useEffect(() => {
-        // for(id in ids) {
-            // console.log(ids[id])
-            axios({
-                method: 'GET',
-                url: `https://api.jikan.moe/v4/users/dark_regliss/animelist`,
-              }).then(data=>{
-                  console.log(data.data.data)
-                  setAnimelist([...animelist, ...data.data.data])
-              }).catch(error => {
-                console.log(error)
-              })
-        // })
+        console.log('yolo')
+        axios({
+            method: 'GET',
+            url: `https://api.jikan.moe/v4/users/dark_regliss/animelist`,
+            }).then(data=>{
+                console.log("yo")
+                console.log(data.data.data)
+                setAnimelist([...animelist, ...data.data.data])
+            }).catch(error => {
+            console.log(error)
+            })
     }, [])
-console.log(animelist)
+useEffect(() => {
+    console.log(animelist)
+    }, [animelist])
   return (
     <ViewStyled>
       <TextStyled>Thomas anime list</TextStyled>

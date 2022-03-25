@@ -8,8 +8,8 @@ const Stack = createNativeStackNavigator()
 const AnimelistStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Animelist' component={Animelist} />
-      <Stack.Screen name='Details' component={Details} />
+      {/* <Stack.Screen name='Animelist' component={Animelist} />
+      <Stack.Screen name='Details' component={Details} /> */}
     </Stack.Navigator>
   )
 }
