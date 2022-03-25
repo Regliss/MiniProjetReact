@@ -4,17 +4,13 @@ import { Text, ScrollView } from 'react-native'
 import styled from 'styled-components'
 import Avatar from '../components/avatar'
 
-const Details = ({ route }) => {
+const RandomManga = ({ route }) => {
   const [manga, setManga] = useState({})
-  const {
-    params: { id }
-  } = route
-  console.log('🚀 ~ file: details.js ~ line 8 ~ Details ~ id', id)
 
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `https://api.jikan.moe/v4/manga/${id}`
+      url: `https://api.jikan.moe/v4/random/manga`
     })
       .then(data => {
         setManga(data.data.data)
@@ -47,4 +43,4 @@ const ViewStyled = styled.View`
     background-color: white;
 `
 
-export default Details
+export default RandomManga

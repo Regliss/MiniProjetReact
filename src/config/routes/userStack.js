@@ -1,7 +1,7 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import User from '../../screens/user'
-import MangaList from '../../screens/mangalist'
+import Mangalist from '../../screens/mangalist'
 import DetailsManga from '../../screens/detailsManga'
 import Animelist from '../../screens/animelist'
 import Details from '../../screens/details'
@@ -20,7 +20,7 @@ const UserStack = () => {
        <Stack.Screen name='Statistiques' component={Statistiques} />
        <Stack.Screen name='Animelist' component={Animelist} />
        <Stack.Screen name='Details' component={Details} />
-       <Stack.Screen name='MangaList' component={MangaList} />
+       <Stack.Screen name='Mangalist' component={Mangalist} />
        <Stack.Screen name='DetailsManga' component={DetailsManga} />
     </Stack.Navigator>
   )
