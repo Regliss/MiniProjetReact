@@ -4,12 +4,19 @@ import { Text, ScrollView } from 'react-native'
 import styled from 'styled-components'
 import Avatar from '../components/avatar'
 import YoutubePlayer from "react-native-youtube-iframe";
+import { useFocusEffect, useIsFocused  } from '@react-navigation/native'
 
 const RandomAnime = ({ route }) => {
   const [anime, setAnime] = useState({})
   const [playing, setPlaying] = useState(false);
+  const isFocused = useIsFocused()
 
   useEffect(() => {
+    getRandomAnime()
+  }, [])
+
+
+  const getRandomAnime = () => {
     axios({
       method: 'GET',
       url: `https://api.jikan.moe/v4/random/anime`
@@ -20,7 +27,14 @@ const RandomAnime = ({ route }) => {
       .catch(error => {
         console.log(error)
       })
-  }, [])
+  }
+
+//   useFocusEffect(() => {
+//     getRandomAnime()
+//   })
+// isFocused(() => {
+//     getRandomAnime()
+//   })
 
   const onStateChange = useCallback((state) => {
     if (state === "ended") {
