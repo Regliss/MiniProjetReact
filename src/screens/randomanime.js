@@ -11,30 +11,44 @@ const RandomAnime = ({ route }) => {
   const [playing, setPlaying] = useState(false);
   const isFocused = useIsFocused()
 
-  useEffect(() => {
-    getRandomAnime()
-  }, [])
-
-
   const getRandomAnime = () => {
-    axios({
+    return axios({
       method: 'GET',
       url: `https://api.jikan.moe/v4/random/anime`
     })
       .then(data => {
-        setAnime(data.data.data)
+        return data.data.data
       })
       .catch(error => {
         console.log(error)
       })
   }
 
-//   useFocusEffect(() => {
-//     getRandomAnime()
-//   })
-// isFocused(() => {
-//     getRandomAnime()
-//   })
+
+  useFocusEffect(
+    React.useCallback(() => {
+      let isActive = true;
+  
+      const fetchAnime = async () => {
+        try {
+          const animeData = await getRandomAnime()
+  
+          if (isActive) {
+            setAnime(animeData)
+          }
+        } catch (e) {
+          // Handle error
+        }
+      };
+  
+      fetchAnime();
+  
+      return () => {
+        isActive = false;
+        setAnime({})
+      };
+    }, [])
+  );
 
   const onStateChange = useCallback((state) => {
     if (state === "ended") {

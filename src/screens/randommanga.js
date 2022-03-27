@@ -3,22 +3,48 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { Text, ScrollView } from 'react-native'
 import styled from 'styled-components'
 import Avatar from '../components/avatar'
+import { useFocusEffect, useIsFocused  } from '@react-navigation/native'
 
 const RandomManga = ({ route }) => {
   const [manga, setManga] = useState({})
 
-  useEffect(() => {
-    axios({
+  const getRandomManga = () => {
+    return axios({
       method: 'GET',
       url: `https://api.jikan.moe/v4/random/manga`
     })
       .then(data => {
-        setManga(data.data.data)
+        return data.data.data
       })
       .catch(error => {
         console.log(error)
       })
-  }, [])
+  }
+
+  useFocusEffect(
+    React.useCallback(() => {
+      let isActive = true;
+  
+      const fetchManga = async () => {
+        try {
+          const mangaData = await getRandomManga()
+  
+          if (isActive) {
+            setManga(mangaData)
+          }
+        } catch (e) {
+          // Handle error
+        }
+      };
+  
+      fetchManga();
+  
+      return () => {
+        isActive = false;
+        setManga({})
+      };
+    }, [])
+  );
 
   return (
     <ScrollView>

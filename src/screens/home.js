@@ -58,7 +58,7 @@ const Home = ({ navigation }) => {
 const TextStyled = styled.Text``
 const Button = styled.TouchableOpacity``
 const Image = styled.Image`
-  width: 400px;
+  width: 100%;
   height: 100px;
 `
 
