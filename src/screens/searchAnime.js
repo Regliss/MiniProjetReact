@@ -4,7 +4,7 @@ import { Text, Button, FlatList, TextInput } from 'react-native'
 import styled from 'styled-components'
 import Avatar from '../components/avatar'
 
-const searchAnime = ({ navigation }) => {
+const SearchAnime = ({ navigation }) => {
 const [animes, setAnimes] = useState([])
 const [loading, setLoading] = useState(false) 
 const [stepPage, setStepPage] = useState(1);
@@ -68,6 +68,7 @@ useEffect(() => {
          setStepPage(stepPage + 1)} }
         renderItem={({ item }) => {
             console.log(item)
+            if (!item?.images?.jpg?.image_url) return null
             return (
             <ViewStyled>
             <Avatar
@@ -90,4 +91,4 @@ const ViewStyled = styled.View`
     background-color: white;
 `
 
-export default searchAnime
+export default SearchAnime

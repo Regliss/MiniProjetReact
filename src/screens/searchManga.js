@@ -4,7 +4,7 @@ import { Text, Button, FlatList, TextInput } from 'react-native'
 import styled from 'styled-components'
 import Avatar from '../components/avatar'
 
-const searchManga = ({ navigation }) => {
+const SearchManga = ({ navigation }) => {
 const [mangas, setMangas] = useState([])
 const [loading, setLoading] = useState(false) 
 const [stepPage, setStepPage] = useState(1);
@@ -90,4 +90,4 @@ const ViewStyled = styled.View`
     background-color: white;
 `
 
-export default searchManga
+export default SearchManga

@@ -16,7 +16,7 @@ const BottomTab = createBottomTabNavigator()
 const Routes = () => {
   return (
     <NavigationContainer>
-      <BottomTab.Navigator screenOptions={{headerShown: false}}>
+      <BottomTab.Navigator screenOptions={{headerShown: false, keyboardHideTabBar:true}} tabBarOptions={{keyboardHidesTabBar: true}}>
         <BottomTab.Screen options={{ tabBarLabel: 'Home', tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),
