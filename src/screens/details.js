@@ -7,6 +7,7 @@ import YoutubePlayer from "react-native-youtube-iframe";
 
 const Details = ({ route }) => {
   const [anime, setAnime] = useState({})
+  const [themes, setThemes] = useState({})
   const [playing, setPlaying] = useState(false);
   const {
     params: { id }
@@ -18,13 +19,25 @@ const Details = ({ route }) => {
       method: 'GET',
       url: `https://api.jikan.moe/v4/anime/${id}`
     })
-      .then(data => {
-          //console.log(data)
-        setAnime(data.data.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    .then(data => {
+        //console.log(data)
+      setAnime(data.data.data)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+    axios({
+      method: 'GET',
+      url: `https://api.jikan.moe/v4/anime/${id}/themes`
+    })
+    .then(data => {
+        console.log(data)
+      setThemes(data.data.data)
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }, [])
 
   const onStateChange = useCallback((state) => {

@@ -3,10 +3,18 @@ import React, { useEffect, useState } from 'react'
 import { Text, Button, FlatList } from 'react-native'
 import styled from 'styled-components'
 import Avatar from '../components/avatar'
+import malOauth from 'myanimelist-oauth'
 
 const AnimeList = ({ navigation }) => {
 const [animelist, setAnimelist] = useState([])
-    const ids = [ 40540, 6702, 40540, 1735, 21, 30276, 1535, 269, 5114, 16498, 11061]
+const [myanimelist, setMyanimelist] = useState([])
+const ids = [ 40540, 6702, 40540, 1735, 21, 30276, 1535, 269, 5114, 16498, 11061]
+
+// setMyanimelist = new malOauth({
+//   clientID: "ef374fa02cfa2911892ae9603a33bcb5",
+//   callback: "http://localhost:3000/callback",
+//   // clientSecret: "your client secret", // not required if your application is registered as "Android", "IOS", or "Other"
+// });
 
     const handleStatus = (status) => {
         switch(status){
@@ -20,9 +28,15 @@ const [animelist, setAnimelist] = useState([])
             //     return "Dropped";
             // case 5:
             //     return "Plan to Watch";
+
+            // code-verifier = 43*128unreserved43*128unreserved43*128unreserved
+            // code-challenger = NDMqMTI4dW5yZXNlcnZlZDQzKjEyOHVucmVzZXJ2ZWQ0MyoxMjh1bnJlc2VydmVk
+            // token = 6434fafd7295075a26543222fb5b35f565c302b3
         }
     }
     useEffect(() => {
+        // const test = myanimelist();
+        // console.log(test);
         console.log('yolo')
         axios({
             method: 'GET',

@@ -6,21 +6,31 @@ import Avatar from '../components/avatar'
 
 const Manga = ({ navigation }) => {
 const [mangas, setMangas] = useState([])
+const [loading, setLoading] = useState(false) 
+const [stepPage, setStepPage] = useState(1);
     const ids = [ 40540, 6702, 40540, 1735, 21, 30276, 1535, 269, 5114, 16498, 11061]
+
+const getMangas = (page) => {
+  setLoading(true)
+  axios({
+    method: 'GET',
+    url: `https://api.jikan.moe/v4/manga/`,
+    params: {
+      page: page,
+    }
+  }).then(data=>{
+      console.log(data)
+      setLoading(false)
+    setMangas([...mangas, ...data.data.data])
+  }).catch(error => {
+    setLoading(false)
+    console.log(error)
+  });
+}
+
     useEffect(() => {
-        // for(id in ids) {
-            // console.log(ids[id])
-            axios({
-                method: 'GET',
-                url: `https://api.jikan.moe/v4/manga/`,
-              }).then(data=>{
-                  console.log(data)
-                setMangas([...mangas, ...data.data.data])
-              }).catch(error => {
-                console.log(error)
-              })
-        // })
-    }, [])
+      getMangas(stepPage)
+    }, [stepPage])
 console.log(mangas)
   return (
     <ViewStyled>
@@ -33,6 +43,10 @@ console.log(mangas)
       <FlatList
         data={mangas}
         keyExtractor={item => item?.mal_id}
+        onEndTreshold={300}
+        onEndReached = { () =>{
+          if(loading) return
+         setStepPage(stepPage + 1)} }
         renderItem={({ item }) => {
             console.log(item)
             return (

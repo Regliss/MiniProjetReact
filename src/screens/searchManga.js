@@ -4,46 +4,63 @@ import { Text, Button, FlatList, TextInput } from 'react-native'
 import styled from 'styled-components'
 import Avatar from '../components/avatar'
 
-const Anime = ({ navigation }) => {
-const [animes, setAnimes] = useState([])
+const searchManga = ({ navigation }) => {
+const [mangas, setMangas] = useState([])
 const [loading, setLoading] = useState(false) 
 const [stepPage, setStepPage] = useState(1);
+const [search, setSearch] = useState("");
+const [searchPage, setSearchPage] = useState(1);
 
-const getAnimes = (page) => {
+const updateSearch = (search) => {
+  console.log(search);
+  getMangasSearch(search, stepPage);
+};
+
+const handleChange = text => {
+  console.log(text);
+  setSearch(text);
+};
+
+const getMangasSearch = (search, page) => {
   setLoading(true)
-  console.log(page)
+  console.log(search)
   axios({
     method: 'GET',
-    url: `https://api.jikan.moe/v4/anime/`,
+    url: `https://api.jikan.moe/v4/manga/`,
     params: {
       page: page,
-    }
+      q: search,
+  }
   }).then(data=>{
-      // console.log(data)
+      console.log(data)
       setLoading(false)
-    setAnimes([...animes, ...data.data.data])
+    setMangas([mangas, ...data.data.data])
   }).catch(error => {
-      setLoading(false)
-
+    setLoading(false)
     console.log(error)
   })
 };
 
 useEffect(() => {
-  getAnimes(stepPage)
+  // getMangas(stepPage)
 }, [stepPage])
-// console.log(animes)
+// console.log(mangas)
 
   return (
     <ViewStyled>
-      <TextStyled>Animes</TextStyled>
-      {/* <Button
-        onPress={() => navigation.navigate('HomeStack', { screen: 'settings' })}
+      <TextInput
+        type="text"
+        placeholder="Search"
+        value={search}
+        onChangeText={handleChange}
+      />
+      <Button
+          title="search"
+          onPress={() => updateSearch(search)}
       >
-        <TextStyled>To Home</TextStyled>
-      </Button> */}
+      </Button>
       <FlatList
-        data={animes}
+        data={mangas}
         keyExtractor={item => item?.mal_id}
         onEndTreshold={300}
         onEndReached = { () =>{
@@ -59,7 +76,7 @@ useEffect(() => {
            <Text>{item?.title}</Text> 
             <Button
                 title="details"
-                onPress={() => navigation.navigate('Details', { id: item.mal_id })}
+                onPress={() => navigation.navigate('DetailsManga', { id: item.mal_id })}
            >
             </Button>
             </ViewStyled>
@@ -73,4 +90,4 @@ const ViewStyled = styled.View`
     background-color: white;
 `
 
-export default Anime
+export default searchManga
