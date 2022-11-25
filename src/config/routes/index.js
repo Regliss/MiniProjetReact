@@ -9,6 +9,8 @@ import AnimesStack from './animeStack'
 import RandomanimeStack from './randomanimeStack';
 import MangasStack from './mangasStack'
 import RandommangaStack from './randommangaStack';
+import CharactersStack from './characterStack';
+import RandomcharacterStack from './randomcharacterStack';
 import UserStack from './userStack'
 
 const BottomTab = createBottomTabNavigator()
@@ -16,7 +18,7 @@ const BottomTab = createBottomTabNavigator()
 const Routes = () => {
   return (
     <NavigationContainer>
-      <BottomTab.Navigator screenOptions={{headerShown: false, keyboardHideTabBar:true}} tabBarOptions={{keyboardHidesTabBar: true}}>
+      <BottomTab.Navigator screenOptions={{headerShown: false, tabBarHideOnKeyboard:true}}>
         <BottomTab.Screen options={{ tabBarLabel: 'Home', tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),
@@ -37,10 +39,14 @@ const Routes = () => {
             <MaterialCommunityIcons name="book-open-blank-variant" color={color} size={size} />
           ),
         }} name='RandommangaStack' component={RandommangaStack} />
-        <BottomTab.Screen options={{ tabBarLabel: 'User', tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
+        <BottomTab.Screen options={{ tabBarLabel: 'Characters', tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="book-open-blank-variant" color={color} size={size} />
           ),
-        }}  name='UserStack' component={UserStack} />
+        }} name='CharactersStack' component={CharactersStack} />
+        <BottomTab.Screen options={{ tabBarLabel: 'Random', tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="book-open-blank-variant" color={color} size={size} />
+          ),
+        }} name='RandomcharacterStack' component={RandomcharacterStack} />
       </BottomTab.Navigator>
     </NavigationContainer>
   )

@@ -38,15 +38,19 @@ const Home = ({ navigation }) => {
       <Button onPress={() => navigation.navigate('SearchManga')}>
         <TextStyled>To Mangas Search</TextStyled>
       </Button>
+
+      <Button onPress={() => navigation.navigate('Character')}>
+        <TextStyled>To Characters</TextStyled>
+      </Button>
+      <Button onPress={() => navigation.navigate('SearchCharacter')}>
+        <TextStyled>To Characters Search</TextStyled>
+      </Button>
       {/* <Button onPress={() => navigation.navigate('Mangalist')}> */}
       {/* <Button
         onPress={() => navigation.navigate('MangalistStack', { screen: 'Mangalist' })}
       >
         <TextStyled>To my manga list</TextStyled>
       </Button> */}
-      <Button onPress={() => navigation.navigate('UserStack', { screen: 'User' })}>
-        <TextStyled>To User</TextStyled>
-      </Button>
     </ScrollView>
   )
 }

@@ -14,7 +14,7 @@ const Avatar = ({ urlImage }) => {
 
 const Image = styled.Image`
   width: 200px;
-  height: 200px;
+  height: 270px;
 `
 
 export default Avatar

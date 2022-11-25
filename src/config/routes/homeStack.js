@@ -10,6 +10,8 @@ import Mangas from '../../screens/manga'
 import User from '../../screens/user'
 import SearchAnime from '../../screens/searchAnime'
 import SearchManga from '../../screens/searchManga'
+import Character from'../../screens/character'
+import SearchCharacter from '../../screens/searchCharacter'
 
 const Stack = createNativeStackNavigator()
 
@@ -26,9 +28,10 @@ const HomeStack = () => {
       <Stack.Screen name='RandomAnime' component={RandomAnime} />
       <Stack.Screen name='Mangas' component={Mangas} />
       <Stack.Screen name='MangaList' component={MangaList} />
-      <Stack.Screen name='User' component={User} />
       <Stack.Screen name='SearchAnime' component={SearchAnime} />
       <Stack.Screen name='SearchManga' component={SearchManga} />
+      <Stack.Screen name='Character' component={Character} />
+      <Stack.Screen name='SearchCharacter' component={SearchCharacter} />
     </Stack.Navigator>
   )
 }

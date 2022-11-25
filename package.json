@@ -1,5 +1,5 @@
 {
-  "name": "ynovnative2022",
+  "name": "Otaku",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -19,6 +19,7 @@
     "myanimelist-oauth": "^1.0.2",
     "react": "17.0.2",
     "react-native": "0.67.3",
+    "react-native-rename": "^2.9.0",
     "react-native-safe-area-context": "^4.1.2",
     "react-native-screens": "^3.13.1",
     "react-native-uuid": "^2.0.1",

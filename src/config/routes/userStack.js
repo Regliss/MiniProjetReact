@@ -13,6 +13,7 @@ const UserStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
+        screenOptions={{keyboardHidesTabBar: true}}
         options={{ headerShown: true }}
         name='User'
         component={User}
